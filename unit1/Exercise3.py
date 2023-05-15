@@ -3,13 +3,19 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import random
 
-#EXERCISE 2. OBSERVATION: less epochs required to achieve 0 errors, 
+#EXE 3.3: No changes, the same as before introducting alpha to original code
+#EXE 3.4: With learning rate = 0.5 less erros but still the same number of epochs required. 
+#epoch 1 errors = 0.5, epoch 2 errors = 1.5, epoch 3 errors = 0.5, then errors = 0
+#EXE 3.5 With small random weights training with learning rate = 0.5 requires 3 epochs for errors = 0 (errors =1 for first 2 epochs), while
+# with learning rate = 1.0 requires also 3 epochs for errors = 0 but epoch 1 errors = 1, epoch 2 errors = 1
+
 class Perceptron:
-    def __init__(self, num_features):
+    def __init__(self, num_features, alpha):
         random.seed(123)
         self.num_features = num_features
         self.weights = [random.uniform(-0.5, 0.5) for _ in range(num_features)] #w_[i] = 0 
         self.bias = random.uniform(-0.5, 0.5) #b = 0 
+        self.alpha = alpha
 
     def forward(self, x):
         weighted_sum_z = self.bias #z = b
@@ -27,8 +33,7 @@ class Perceptron:
     
     def update(self , x, true_y):
         prediction = self.forward(x)
-        error = true_y - prediction
-
+        error = self.alpha* (true_y - prediction)
         # update bias and weights iterating thr. each  feature 
         self.bias += error
         for i, _ in enumerate(self.weights):
@@ -45,7 +50,7 @@ def train(model, all_x, all_y, epochs):
             error = model.update(x, y)
             error_count += abs(error)
         print(f"Epoch {epoch+1} errors {error_count}")
-        if error_count == 0: break #EXERCISE 1
+        
 
 def compute_accuracy(model, all_x, all_y):
 
@@ -78,7 +83,7 @@ X_train = df[["x1", "x2"]].values
 y_train = df["label"].values
 
 
-ppn = Perceptron(num_features=2)
+ppn = Perceptron(num_features=2, alpha = 0.5)
 
 train(model=ppn, all_x=X_train, all_y=y_train, epochs=5)
 

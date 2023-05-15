@@ -1,7 +1,6 @@
 #import libraries
 import pandas as pd
 import matplotlib.pyplot as plt
-import random
 
 class Perceptron:
     def __init__(self, num_features):
@@ -69,7 +68,7 @@ def plot_boundary(model):
     return x1_min, x1_max, x2_min, x2_max
 
 #import dataset that includes x1 x2 and label y
-df = pd.read_csv("perceptron_toydata-truncated.txt", sep="\t")
+df = pd.read_csv("unit1/perceptron_toydata-truncated.txt", sep="\t")
 
 #features x1 x2 go to X and labels to Y
 X_train = df[["x1", "x2"]].values
