@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import random
 
-#EXERCISE 2. OBSERVATION: less epochs required to achieve 0 errors, 
+#EXERCISE 2. OBSERVATION: less epochs required to achieve 0 errors, epoch 1 errors 4, epoch 2 errors 1, epoch 3 erors 0
 class Perceptron:
     def __init__(self, num_features):
         random.seed(123)
@@ -87,7 +87,7 @@ print(train_acc)
 
 x1_min, x1_max, x2_min, x2_max = plot_boundary(ppn)
 
-#Vizualization 
+#Visualization 
 
 #Class 0
 plt.plot(

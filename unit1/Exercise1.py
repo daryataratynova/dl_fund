@@ -84,7 +84,7 @@ print(train_acc)
 
 x1_min, x1_max, x2_min, x2_max = plot_boundary(ppn)
 
-#Vizualization 
+#Visualization 
 
 #Class 0
 plt.plot(
