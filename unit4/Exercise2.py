@@ -6,6 +6,7 @@ from torch.utils.data.dataset import random_split
 import torch.nn.functional as F
 from collections import Counter
 
+#Train acc 89.68%, val acc 87.98%, test acc 86.75%
 def load_mnist(path, kind='train'):
     import os
     import gzip
